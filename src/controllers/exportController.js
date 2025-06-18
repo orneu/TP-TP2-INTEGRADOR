@@ -9,6 +9,7 @@ export async function exportCSV(req, res) {
     res.attachment('historial.csv');
     res.send(csv);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Error exportando CSV' });
   }
 }

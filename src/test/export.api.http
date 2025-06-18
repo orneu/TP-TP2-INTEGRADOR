@@ -1,0 +1,15 @@
+### 8. GET /api/export/csv
+# Este endpoint exporta el historial a un archivo CSV.
+# Se espera una descarga con encabezados y filas.
+
+GET http://localhost:8080/api/export/csv
+Authorization: Bearer {{token}}
+
+###
+
+### 9. GET /api/export/pdf
+# Este endpoint exporta las estadísticas a un PDF descargable.
+# Se espera un archivo PDF generado dinámicamente.
+
+GET http://localhost:8080/api/export/pdf
+Authorization: Bearer {{token}}

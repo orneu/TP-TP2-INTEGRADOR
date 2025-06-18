@@ -1,0 +1,40 @@
+### 3. POST /api/film
+# Este endpoint registra una nueva película o serie vista por el usuario autenticado.
+# Se espera un objeto con los datos de la película creada.
+
+POST http://localhost:8080/api/film
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Parasite",
+  "genre": "Drama",
+  "duration": 132,
+  "dateWatched": "2025-06-10"
+}
+
+### 4. GET /api/film
+# Este endpoint devuelve el historial completo de películas y series vistas por el usuario autenticado.
+# Se espera un array con objetos tipo película/serie.
+
+GET http://localhost:8080/api/film
+Authorization: Bearer {{token}}
+
+
+
+
+
+
+### 10. ❌ POST inválido /api/films
+# Caso NO feliz - se intenta crear una película sin título.
+# Se espera error 400 con mensaje "Title is required"
+
+POST http://localhost:8080/api/films
+Content-Type: application/json
+Authorization: Bearer {token}
+
+{
+  "genre": "Drama",
+  "duration": 120,
+  "dateWatched": "2025-06-09"
+}

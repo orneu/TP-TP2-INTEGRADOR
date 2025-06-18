@@ -8,6 +8,7 @@ export async function createFilm(req, res) {
     const film = await filmService.createFilm({ userId, title, genre, type, duration, dateWatched });
     res.status(201).json(film);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Error creando visualización' });
   }
 }
@@ -18,6 +19,7 @@ export async function getFilms(req, res) {
     const films = await filmService.getFilmsByUser(userId);
     res.json(films);
   } catch (error) {
+    console.error(error)
     res.status(500).json({ error: 'Error obteniendo historial' });
   }
 }

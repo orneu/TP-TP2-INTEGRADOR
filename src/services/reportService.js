@@ -14,6 +14,8 @@ export function calculateUserReport(films) {
   const daysCount = {};
 
   films.forEach((film) => {
+
+    const watchedDate = new Date(film.dateWatched);
     const month = film.dateWatched.toISOString().slice(0, 7);
     hoursPerMonth[month] = (hoursPerMonth[month] || 0) + film.duration / 60;
 

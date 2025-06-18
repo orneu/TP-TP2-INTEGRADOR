@@ -1,0 +1,20 @@
+### 5. GET /api/report
+# Este endpoint devuelve un reporte con estadísticas generales para el usuario.
+# Se espera un objeto con datos agregados (horas vistas, géneros, días activos).
+
+GET http://localhost:8080/api/report
+Authorization: Bearer {{token}}
+
+### 6. GET /api/export/csv
+# Este endpoint exporta el historial de visionado a un archivo CSV.
+# Se espera una descarga con encabezados y filas.
+
+GET http://localhost:8080/api/export/csv
+Authorization: Bearer {{token}}
+
+### 7. GET /api/export/pdf
+# Este endpoint exporta las estadísticas a un archivo PDF.
+# Se espera un archivo PDF generado dinámicamente.
+
+GET http://localhost:8080/api/export/pdf
+Authorization: Bearer {{token}}

@@ -1,10 +1,17 @@
 import express from "express";
-import { getUserReport } from "../controllers/ReportsController.js";
-import authMiddleware from "../middlewares/authMiddleware.js";
+import { getUserReport } from "../controllers/reportsController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const reportRouter = express.Router();
 
-router.use(authMiddleware);
-router.get("/", getUserReport);
+reportRouter.use(authMiddleware);
+reportRouter.get("/", getUserReport);
 
-export { reportRouter };
+export default reportRouter;
+
+
+
+
+
+
+

@@ -1,0 +1,28 @@
+### 1. POST /api/auth/register
+# Este endpoint registra un nuevo usuario en el sistema.
+# Se espera un objeto con el nuevo usuario creado (sin contraseña).
+
+POST http://localhost:8080/api/users/register
+Content-Type: application/json
+
+{
+  "username": "chati",
+  "email": "chati@mail.com",
+  "password": "1234"
+}
+
+###
+
+### 2. POST /api/auth/login
+# Este endpoint inicia sesión y devuelve un token JWT.
+# Se espera un objeto con el token: { "token": "..." }
+
+POST http://localhost:8080/api/users/login
+Content-Type: application/json
+
+{
+  "username": "chati",
+  "password": "1234"
+}
+
+> {% client.global.set("token", JSON.parse(response.body).token); %}

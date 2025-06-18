@@ -1,4 +1,4 @@
-import * as filmRepository from "../repositories/filmRepository.js";
+import * as filmRepository from "../repositories/film.repository.js";
 
 // Crea un nuevo registro de visualización de peliculas y series.
 export async function createFilm(data) {

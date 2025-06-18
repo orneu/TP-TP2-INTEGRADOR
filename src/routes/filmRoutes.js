@@ -1,12 +1,12 @@
 import express from "express";
 import { createFilm, getFilms } from "../controllers/filmController.js";
-import authMiddleware from "../middlewares/authMiddleware.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const filmRouter = express.Router();
 
-router.use(authMiddleware); // todas requieren autenticación
+filmRouter.use(authMiddleware); // todas requieren autenticación
 
-router.post("/", createFilm);
-router.get("/", getFilms);
+filmRouter.post("/", createFilm);
+filmRouter.get("/", getFilms);
 
-export { filmRouter };
+export default filmRouter;
