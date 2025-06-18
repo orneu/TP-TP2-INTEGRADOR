@@ -6,17 +6,20 @@ const { JWT_SECRET } = process.env;
 if (!JWT_SECRET) throw new Error("JWT_SECRET no está definido en .env");
 
 export async function registerUser({ username, password }) {
-  if (!username || !password) {
-    throw new Error("Username y password son requeridos");
+  try {
+    if (!username || !password) {
+      throw new Error("Username y password son requeridos");
+    }
+
+    if (await userRepo.findUserByUsername(username)) {
+      throw new Error("Usuario ya existe");
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    await userRepo.createUser({ username, password: hashedPassword });
+  } catch (error) {
+    throw error;
   }
-
-  if (await userRepo.findUserByUsername(username)) {
-    throw new Error("Usuario ya existe");
-  }
-
-  const hashedPassword = await bcrypt.hash(password, 10);
-  await userRepo.createUser({ username, password: hashedPassword });
-
   return { message: "Usuario creado exitosamente" };
 }
 
