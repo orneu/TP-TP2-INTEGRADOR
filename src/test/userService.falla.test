@@ -1,0 +1,11 @@
+import { registerUser, loginUser } from '../services/userService.js';
+
+describe('User Service - Casos no felices', () => {
+  it('debería lanzar error al registrar usuario sin contraseña', async () => {
+    await expect(registerUser({ username: 'test2' })).rejects.toThrow('Username y password son requeridos');
+  });
+
+  it('debería lanzar error al loguear usuario inexistente', async () => {
+    await expect(loginUser({ username: 'nouser', password: 'wrong' })).rejects.toThrow('Usuario o contraseña incorrectos');
+  });
+});

@@ -1,0 +1,25 @@
+import { registerUser, loginUser } from '../services/userService.js';
+import mongoose from 'mongoose';
+import User from '../models/User.js';
+
+beforeAll(async () => {
+  await mongoose.connect('mongodb://localhost:27017/film_test', { useNewUrlParser: true, useUnifiedTopology: true });
+});
+
+afterAll(async () => {
+  await User.deleteMany({});
+  await mongoose.disconnect();
+});
+
+describe('User Service - Casos felices', () => {
+  it('debería registrar un nuevo usuario', async () => {
+    const result = await registerUser({ username: 'testuser', password: 'password123' });
+    expect(result).toHaveProperty('message');
+  });
+
+  it('debería permitir login con credenciales válidas', async () => {
+    const result = await loginUser({ username: 'testuser', password: 'password123' });
+    expect(result).toHaveProperty('token');
+    expect(result).toHaveProperty('username', 'testuser');
+  });
+});
