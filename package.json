@@ -20,7 +20,9 @@
     "@biomejs/biome": "^2.0.0",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongoose": "^8.16.0"
+    "mongoose": "^8.16.0",
+    "mysql2": "^3.14.1",
+    "sequelize": "^6.37.7"
   },
   "devDependencies": {
     "@types/json2csv": "^5.0.7"
