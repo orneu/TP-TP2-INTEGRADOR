@@ -1,9 +1,9 @@
-import * as filmRepo from "../repositories/filmRepository.js";
+import { filmRepository } from "../repositories/film.repository.js";
 
 // Recupera todas las visualizaciones de un usuario.
 
 export async function getUserFilms(userId) {
-  return filmRepo.getFilmsByUser(userId);
+  return filmRepository.getFilmsByUser(userId);
 }
 
 //Procesa la lista de films y devuelve un reporte con horas totales por mes, genero más visto, dia con mayor actividad

@@ -1,4 +1,4 @@
-import * as userRepo from "../repositories/userRepository.js";
+import userRepository from "../repositories/user.repository.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -11,12 +11,12 @@ export async function registerUser({ username, password }) {
       throw new Error("Username y password son requeridos");
     }
 
-    if (await userRepo.findUserByUsername(username)) {
+    if (await userRepository.findUserByUsername(username)) {
       throw new Error("Usuario ya existe");
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await userRepo.createUser({ username, password: hashedPassword });
+    await userRepository.createUser({ username, password: hashedPassword });
   } catch (error) {
     throw error;
   }
@@ -28,7 +28,7 @@ export async function loginUser({ username, password }) {
     throw new Error("Username y password son requeridos");
   }
 
-  const user = await userRepo.findUserByUsername(username);
+  const user = await userRepository.findUserByUsername(username);
   if (!user || !(await bcrypt.compare(password, user.password))) {
     throw new Error("Usuario o contraseña incorrectos");
   }

@@ -1,10 +1,10 @@
-import express from 'express';
-import { exportCSV } from '../controllers/exportController.js';
-import authMiddleware from '../middlewares/authMiddleware.js';
+import express from "express";
+import { exportCSV } from "../controllers/exportController.js";
+import authMiddleware from "../middlewares/authMiddleware.js";
 
-const router = express.Router();
+const exportRouter = express.Router();
 
 router.use(authMiddleware);
-router.get('/csv', exportCSV);
+router.get("/csv", exportCSV);
 
-export default router;
+export { exportRouter };
