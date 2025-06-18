@@ -1,7 +1,8 @@
 import express from "express";
 import dotenv from "dotenv";
 import userRoutes from "./src/routes/userRoutes.js";
-import statisticsRoutes from "./routes/statisticsRoutes.js";
+import filmRoutes from "./routes/filmRoutes.js";
+import reportRoutes from "./routes/reportRoutes.js";
 import exportRoutes from "./src/routes/exportRoutes.js";
 import authMiddleware from "./middlewares/authMiddleware.js";
 import mongoose from "mongoose";
@@ -22,7 +23,7 @@ dotenv.config();
 const app = express();
 
 app.use(express.json());
-app.use("/api/users", usersRoutes);
+app.use("/api/users", userRoutes);
 app.use(authMiddleware);
 app.use("/api/export", exportRoutes);
 app.use("/api/report", reportRoutes);
