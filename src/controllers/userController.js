@@ -2,10 +2,10 @@ import * as userService from "../services/userService.js";
 
 export async function register(req, res) {
   try {
-    console.log("Entrando al login"); 
+     
     const { username, password } = req.body;
     const result = await userService.registerUser({ username, password });
-    console.log("Resultado login:", result); 
+    
     res.status(201).json(result);
   } catch (error) {
     console.error("Error en login:", error);
@@ -18,8 +18,10 @@ export async function register(req, res) {
 
 export async function login(req, res) {
   try {
+    console.log("Entrando al login");
     const { username, password } = req.body;
     const result = await userService.loginUser({ username, password });
+    console.log("Resultado login:", result); 
     res.json(result);
   } catch (error) {
     console.error(error);
